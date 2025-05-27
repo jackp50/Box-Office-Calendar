@@ -6,7 +6,7 @@ export default function Header() {
     <>
         <nav className = "header-container">
             <div>
-            <h1>Box Office Calendar</h1>
+            <h1>Top Ten Film Calendar</h1>
             </div>
 
             <div className = "header-links">
