@@ -4,7 +4,7 @@ import { useEffect, useState } from "react"
 
 export default function MovieList() {
     // importing key from TMDb
-    const apiKey = import.meta.env.VITE_API_KEY;
+    const apiKey = import.meta.env.VITE_API_KEY
     // state for the movies inside movieList
     const [movies, setMovies] = useState([])
     // state for the year chosen by user
@@ -23,7 +23,7 @@ export default function MovieList() {
               const response = await axios.get(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&primary_release_year=${year}&region=US&sort_by=revenue.desc&with_origin_country=US&with_original_language=en&with_release_type=2|3`, {
                 params: 
                 { api_key: apiKey },
-              });
+              })
               //set the state of movies to these results, then display movies later
               setMovies(response.data.results)
 
@@ -36,11 +36,19 @@ export default function MovieList() {
           //run this effect every time the year is changed
         }, [year])
 
+        const handleSetYear = () => {
+            if (inputYear >= 1940 && inputYear <= 2025) {
+              setYear(inputYear)
+            } else {
+              alert("Please enter a year between 1940 and 2025.")
+            }
+          }
+
                 
     return(
         <>
             <div className = "input-label">
-                <label htmlFor="year-select">Choose a year:</label>
+                <label className = "year-text" htmlFor="year-select">Choose a year:</label>
                     <input
                         type="number"
                         min = "1940"
@@ -51,18 +59,17 @@ export default function MovieList() {
                         // then is used to set the year for earlier when the api is called. It is split up
                         // like this because the inputYear is what the user is putting in the input, while
                         // the setYear takes that with parameters.
-                        onChange={(e) => setInputYear(e.target.value)} 
-                    />
-                    <button
-                        onClick={() => {
-                            if (inputYear >= 1940 && inputYear <= 2025) {
-                            setYear(inputYear);
-                            } else {
-                            alert("Please enter a year between 1940 and 2025.");
+                        onChange={(e) => setInputYear(e.target.value)}
+                        onKeyDown={(e) => {
+                            if (e.key === "Enter") {
+                              handleSetYear()
                             }
-                        }}
+                          }}
+                    />
+                    <button className= "set-year-button"
+                        onClick = {handleSetYear}
                         >
-                        Set Year
+                        Go!
                     </button>
                     
             </div>
@@ -70,16 +77,12 @@ export default function MovieList() {
 
             {/* upper div is movie-list-container */}
             <div className="movie-list-container">
-                {/* in this container, map through the array of movies, each item inside */}
-                {/* will be defined as movie */}
-            {movies.map((movie) => (
-                //each movie has a className of movie-item, clicking on a movie will set the state of
-                //selected movie which opens the modal for that individual movie
-                <div className="movie-item" key={movie.id} onClick={() => setSelectedMovie(movie)}>
-                    {/* in each movie item div is displays the movie poster */}
-                <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
-                </div>
-            ))}
+                {movies.map((movie, index) => (
+                    <div className="movie-item" key={movie.id} onClick={() => setSelectedMovie(movie)}>
+                    <span className="rank">{index + 1}</span>
+                    <img src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
+                    </div>
+                ))}
             </div>
 
 

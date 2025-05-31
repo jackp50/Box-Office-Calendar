@@ -6,21 +6,19 @@ export default function Header() {
     <>
         <nav className = "header-container">
             <div>
-            <h1>Box Office Calendar</h1>
+                <h1 className="header-title" onClick={() => window.location.href = "/"}>
+                    Box Office Calendar
+                </h1>
             </div>
 
             <div className = "header-links">
                 <Link to = "/">
-                <button className = "header-button">Home</button>
+                <button className = "header-button">Calendar</button>
                 </Link>
 
                 <Link to = "/about">
                 <button className = "header-button">About</button>
                 </Link>
-
-                {/* <Link to = "/trending">
-                <button className = "header-button">Trending</button>
-                </Link> */}
             </div>
             
         </nav>

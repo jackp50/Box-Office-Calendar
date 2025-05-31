@@ -1,20 +1,50 @@
+@font-face {
+  font-family: 'western-font'; 
+  src: url('/fonts/BroncoPersonalUse.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 body {
-  background-color: rgba(0, 0, 0, 0.814);
+  background-color: #003049;
   color: white;
+  padding: 0;
+  margin: 0;
+  font-family: "western-font", 'Times New Roman', Times, serif;
 }
 
 .header-container {
   /* Header items side by side */
   display: flex;
   /*  Space between the two header items*/
-  justify-content: space-between;
+  justify-content:space-around;
   /* Centers the items vertically in the container */
   align-items: center;
+  background-color: #fdf0d5;
+  height: 100px;
+  margin-bottom: 40px;
+  color: black;
+  font-size: 30px;
 }
 
 .header-button {
+  margin-left: 10px;
+  background-color: #780000;
+  color: #fdf0d5;
+  /* Removes default button border */
+  border: none;
+  /* Adds padding around letters in button */
+  padding: 12px 24px; 
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  /* hover effect transition */
+  transition: all 0.3s ease-in-out;
+}
 
+.header-button:hover {
+  background-color: #a30000;
+  transform: scale(1.05);
 }
 
 .movie-list-container {
@@ -35,18 +65,21 @@ body {
 }
 
 .movie-item {
+  /* Position relative to the rank badges */
+  position: relative;
   border-radius: 10px;
   /* width of movie item */
   width: 20%; 
   /* max-width they can be */
-  max-width: 200px; 
-  
+  max-width: 200px;
+  border: 1px solid #fdf0d5;
 }
+
 
 .movie-item img {
   /* width of image inside movie item */
   width: 100%;
-  height: auto; 
+  height: 100%; 
   /* movie item images have rounded corners */
   border-radius: 10px;
   /* make the cursor change when hovered */
@@ -76,11 +109,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family:Georgia, 'Times New Roman', Times, serif
 }
 
 .modal-content {
   background: bisque;
-  padding: 20px;
+  padding: 30px;
   max-width: 500px;
   text-align: center;
   border-radius: 10px;
@@ -100,12 +134,17 @@ body {
 }
 
 #year-select {
-  width: 120px;
-  padding: 8px;
-  font-size: 25px;
-  border-radius: 5px;
+  width: 75px; 
+  font-size: 15px;
+  border-radius: 30px; 
   border: none;
-  margin-left: 15px;
+  padding: 4px 6px; 
+  background-color: #fdf0d5; 
+  color: #780000;
+  text-align: center;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+  margin-left: 10px;
 }
 
 .input-label {
@@ -113,4 +152,70 @@ body {
   justify-content: center;
   align-items: center;
 
+}
+
+.set-year-button {
+  margin-left: 10px;
+  background-color: #780000;
+  color: #fdf0d5;
+  /* Removes default button border */
+  border: none;
+  /* Adds padding around letters in button */
+  padding: 6px 12px; 
+  border-radius: 30px;
+  font-size: 16px;
+  cursor: pointer;
+  /* hover effect transition */
+  transition: all 0.3s ease-in-out;
+}
+
+.set-year-button:hover {
+  background-color: #a30000;
+  transform: scale(1.05);
+}
+
+.year-text{
+  font-size: 20px;
+  color: #fdf0d5;
+}
+
+.about {
+  display: block;
+  text-align: center;
+  font-family:Georgia, 'Times New Roman', Times, serif
+  
+}
+
+.about h1 {
+  font-size: 40px;
+
+}
+
+.about p {
+  font-size: 20px;
+  width: 50%;
+  margin: auto;
+  margin-bottom: 20px;
+}
+
+.rank {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  background: rgba(0, 0, 0, 1);
+  color: #fff;
+  font-size: 14px;
+  font-weight: bolder;
+  padding: 6px 10px;
+  border-radius: 50%;
+}
+
+.header-title {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+.header-title:hover {
+  color: #a30000;
 }
